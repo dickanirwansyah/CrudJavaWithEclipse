@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+  <title th:text="${title}"></title>
+  <link th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+  <link th:href="@{/css/datatables.css}" rel="stylesheet"/>
+  <link th:href="@{/css/datatables-custom-theme.css}" rel="stylesheet"/>
+  <link th:href="@{/css/bootstrap-theme.css}" rel="stylesheet" />
+  
+  <script type="text/javascript" th:src="@{/js/bootbox.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/datatables-bootstrap.js}"></script>
+  <script type="text/javascript" th:src="@{/js/datatables.js}"></script>
+  <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+  <script type="text/javascript" th:src="@{/js/raphael-2.1.0.min.js}"></script>
+ 
+</head>
+<body>
+   <div class="container">
+     <div class="container-fluid">
+       <div class="col-lg-8 col-lg-offset-2">
+         <h3 class="alert alert-success">List Nasabah</h3>
+       </div>
+       <a th:href="@{/data/insert}" class="btn btn-primary">
+         <b>Add Data</b>
+       </a>
+       <div class="page-header">
+          <table class="table table-bordered table-stripped table-condensed" id="tabel-nasabah">
+            <thead>
+              <tr>
+                <th>idnasabah</th>
+                <th>nama</th>
+                <th>notelp</th>
+                <th>alamat</th>
+                <th>opsi</th>
+              </tr>
+            </thead>
+            <tr th:each="nas : ${listnasabah}">
+              <td th:text="${nas.idnasabah}"></td>
+              <td th:text="${nas.nama}"></td>
+              <td th:text="${nas.notelp}"></td>
+              <td th:text="${nas.alamat}"></td>
+              <td>
+                 <a th:href="@{/data/cari(idnasabah=${nas.idnasabah})}" class="btn btn-primary">
+                   <span class="glyphicon glyphicon-pencil"></span>
+                   update
+                 </a>
+                 <a th:href="@{/data/delete(idnasabah=${nas.idnasabah})}" class="btn btn-danger">
+                   <span class="glyphicon glyphicon-trash"></span>
+                   hapus
+                 </a>
+              </td>
+            </tr>
+          </table>
+       </div>
+     </div>
+   </div>
+</body>
+</html>
